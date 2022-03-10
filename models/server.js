@@ -35,13 +35,17 @@ class Server{
 
     sockets() {
         this.io.on('connection', socket => {
-            console.log('client connected', socket.id);
+
             socket.on('disconnect', () =>{
-                console.log('client disconnected', socket.id);
+                // console.log('client disconnected', socket.id);
             })
 
-            socket.on('send-msg', (payload) =>{
-                this.io.emit('send-msg', payload)
+            socket.on('send-msg', (payload, callback) => {
+
+                const id = 123456;
+                callback( id );
+                // this.io.emit('send-msg', payload);
+
             })
         })
     }
