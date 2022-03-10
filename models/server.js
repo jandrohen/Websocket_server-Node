@@ -16,6 +16,9 @@ class Server{
 
         // Routes of the application
         this.routes();
+
+        // Sockets events
+        this.sockets();
     }
 
     middlewares() {
@@ -29,6 +32,15 @@ class Server{
     }
 
     routes() {}
+
+    sockets() {
+        this.io.on('connection', socket => {
+            console.log('client connected', socket.id);
+            socket.on('disconnect', () =>{
+                console.log('client disconnected', socket.id);
+            })
+        })
+    }
 
     listen() {
         this.server.listen(this.port, () => {
