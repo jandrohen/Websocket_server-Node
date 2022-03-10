@@ -8,17 +8,19 @@ const btnSend = document.querySelector('#btnSend');
 const socket = io();
 
 socket.on('connect', ()=>{
-    console.log('connect');
 
     lblOffline.style.display = 'none';
     lblOnline.style.display = '';
 })
 
 socket.on('disconnect', ()=>{
-    console.log('disconnect');
 
     lblOnline.style.display = 'none';
     lblOffline.style.display = '';
+})
+
+socket.on('send-msg', (payload)=>{
+    console.log(payload)
 })
 
 btnSend.addEventListener('click', ()=>{
