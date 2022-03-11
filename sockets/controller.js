@@ -3,11 +3,14 @@ const TicketControl = require("../models/ticket-control");
 const ticketControl = new TicketControl();
 
 const socketController = (socket) => {
-    socket.on('send-msg', (payload, callback) => {
-        const id = 123456;
-        callback( id );
 
-        socket.broadcast.emit('send-msg', payload);
+    socket.emit('last-ticket', ticketControl.last );
+
+    socket.on('next-ticket', ( payload, callback) => {
+
+        const next = ticketControl.next();
+        callback( next );
+
     })
 }
 
