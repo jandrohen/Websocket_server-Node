@@ -1,1 +1,6 @@
-{"last":25,"today":11,"tickets":[{"num":1,"desktop":null},{"num":2,"desktop":null},{"num":3,"desktop":null},{"num":4,"desktop":null},{"num":5,"desktop":null},{"num":6,"desktop":null},{"num":7,"desktop":null},{"num":8,"desktop":null},{"num":9,"desktop":null},{"num":10,"desktop":null},{"num":11,"desktop":null},{"num":12,"desktop":null},{"num":13,"desktop":null},{"num":14,"desktop":null},{"num":15,"desktop":null},{"num":16,"desktop":null},{"num":17,"desktop":null},{"num":18,"desktop":null},{"num":19,"desktop":null},{"num":20,"desktop":null},{"num":21,"desktop":null},{"num":22,"desktop":null},{"num":23,"desktop":null},{"num":24,"desktop":null},{"num":25,"desktop":null}],"lastFour":[]}
+{
+  "last": 0,
+  "today": 11,
+  "tickets": [],
+  "lastFour": []
+}

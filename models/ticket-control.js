@@ -32,7 +32,7 @@ class TicketControl {
 
     init() {
 
-        const { last, today, tickets, lastFour} = require('../db/data.json');
+        const { today, tickets, last, lastFour} = require('../db/data.json');
         if (today === this.today) {
             this.tickets  = tickets;
             this.last     = last;
@@ -72,7 +72,7 @@ class TicketControl {
         this.lastFour.unshift( ticket );
 
         if ( this.lastFour.length > 4 ){
-            this.lastFour.slice(-1,1);
+            this.lastFour.splice(-1,1);
         }
 
         this.saveDB();

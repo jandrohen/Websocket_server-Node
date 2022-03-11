@@ -1,6 +1,9 @@
 // Reference HTML
-const lbldesktop = document.querySelector('h1');
+const lblDesktop = document.querySelector('h1');
 const btnNew = document.querySelector('button');
+const lblTicket = document.querySelector('small');
+const divAlert = document.querySelector('.alert');
+
 
 const searchParams = new URLSearchParams( window.location.search );
 
@@ -10,7 +13,8 @@ if ( !searchParams.has('escritorio')){
 }
 
 const desktop = searchParams.get('escritorio');
-lbldesktop.innerText = desktop;
+lblDesktop.innerText = desktop;
+divAlert.style.display = 'none';
 
 const socket = io();
 
@@ -27,7 +31,12 @@ socket.on('last-ticket', (lastTicket) =>{
 })
 
 btnNew.addEventListener('click', ()=>{
-    // socket.emit( 'next-ticket', null, ( ticket )=>{
-    //     lblNewTicket.innerText = ticket;
-    // });
+
+    socket.emit( 'attend-ticket', { desktop }, ( { ok, ticket, msg } ) => {
+        if ( !ok ) {
+            lblTicket.innerText = 'Nadie.';
+            return divAlert.style.display = '';
+        }
+        lblTicket.innerText = `Ticket ${ticket.num}`;
+    });
 });

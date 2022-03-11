@@ -11,7 +11,31 @@ const socketController = (socket) => {
         const next = ticketControl.next();
         callback( next );
 
-    })
+    });
+
+    socket.on('attend-ticket', ( { desktop }, callback) => {
+        if (!desktop){
+            return callback({
+                ok: false,
+                msg: 'El escritorio es obligatorio'
+            })
+        }
+
+        const ticket = ticketControl.attendTicket( desktop );
+
+        if (!ticket) {
+            callback({
+                ok: false,
+                msg: 'Ya no hay tickets pendientes'
+            })
+        } else {
+            callback({
+                ok: true,
+                ticket
+            })
+        }
+    });
+
 }
 
 module.exports = {
